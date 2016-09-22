@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  node:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    networks:
+      - served-network
+    depends_on:
+      - "mongodb"
+
+  mongodb:
+    image: mongo
+    volumes:
+      - /data/db:/data/db
+    networks:
+      - served-network
+
+networks:
+  served-network:
+    driver: bridge
