@@ -12,7 +12,7 @@ RUN mkdir -p /code /home/nodejs && \
 
 WORKDIR /code
 COPY package.json /code/
-RUN npm install --unsafe-perm=true
+RUN npm install --unsafe-perm=true --silent
 
 COPY . /code
 RUN chown -R nodejs:nodejs /code
