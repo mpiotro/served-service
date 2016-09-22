@@ -18,10 +18,16 @@ gulp.task('default', function () {
         });
 });
 
-gulp.task('test', function() {
-    env({vars: {ENV: 'Test'}});
+gulp.task('test', function () {
+    env({ vars: { ENV: 'Test', PORT: 8001 } });
     gulp.src('tests/*.js')
         .pipe(gulpMocha({
-            reporter: 'nyan'
+            reporter: 'spec'
         }))
-})
+        .once('error', () => {
+            process.exit(1);
+        })
+        .once('end', () => {
+            process.exit();
+        });
+});

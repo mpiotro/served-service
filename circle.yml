@@ -1,0 +1,18 @@
+---
+
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - curl -L https://github.com/docker/compose/releases/download/1.8.0/docker-compose-`uname -s`-`uname -m` > ../bin/docker-compose && chmod +x ../bin/docker-compose
+    - docker-compose pull
+
+  test:
+    override:
+      - docker-compose up:
+        background: true
+      - curl --retry 10 --retry-delay 5 -v http://localhost:8000
+      - docker-compose run node npm test
+      - docker-compose down
