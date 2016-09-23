@@ -11,14 +11,10 @@ dependencies:
   
   override:
     - docker info
-
-database:
-  override:
-    - echo "no database setup"
-  
+ 
 test:
   pre:
-    - docker-compose up -d
+    - docker-compose -f docker-compose-circlr.yml up -d
     - docker-compose logs
     - curl --retry 10 --retry-delay 5 -v http://localhost:8000/api/menu
   
@@ -26,5 +22,5 @@ test:
     - docker-compose run node npm test
 
   post:
-    - docker-compose down -v
+    - docker-compose -f docker-compose-circlr.yml down -v
            
