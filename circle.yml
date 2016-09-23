@@ -14,7 +14,7 @@ dependencies:
  
 test:
   pre:
-    - docker-compose -f docker-compose-circlr.yml up -d
+    - docker-compose -f docker-compose-circle.yml up -d
     - docker-compose logs
     - curl --retry 10 --retry-delay 5 -v http://localhost:8000/api/menu
   
