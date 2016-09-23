@@ -16,7 +16,7 @@ services:
   mongodb:
     image: mongo
     volumes:
-      - /data/db
+      - /data/db:/data/db
     networks:
       - served-network
 
