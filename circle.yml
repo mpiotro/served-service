@@ -22,5 +22,5 @@ test:
     - docker-compose run node npm test
 
   post:
-    - docker-compose -f docker-compose-circlr.yml down -v
+    - docker-compose -f docker-compose-circle.yml down -v
            

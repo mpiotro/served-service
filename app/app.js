@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use('/api/menu', menuRouter);
 
 app.get('/', function (req, res) {
-    res.send('Welcome to Served!');
+    res.send('Welcome to Served from Docker!!!!');
 })
 
 app.listen(port, function () {
